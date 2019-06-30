@@ -8,8 +8,8 @@ spring:
     username: root
     password: root
 
-application:
-  name: sell-product
+  application:
+    name: sell-order
 eureka:
   instance:
     hostname: 127.0.0.1
@@ -20,3 +20,6 @@ eureka:
 server:
   port: 8081
 
+SELL-PRODUCT:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

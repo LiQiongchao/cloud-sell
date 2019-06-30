@@ -1,21 +1,18 @@
-package com.chaox.order.model;
+package com.chaox.order.DTO;
 
+import com.chaox.order.model.OrderDetail;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @Author: LiQiongchao
- * @Date: 2019/6/28 0:02
+ * @Date: 2019/6/30 10:39
  */
 @Data
-@Entity
-public class OrderMaster {
+public class OrderDTO {
 
-    @Id
     private String orderId;
     private String buyerName;
     private String buyerPhone;
@@ -24,7 +21,7 @@ public class OrderMaster {
     private BigDecimal orderAmount;
     private Integer orderStatus;
     private Integer payStatus;
-    private LocalDateTime createTime;
-    private LocalDateTime updateTime;
+
+    private List<OrderDetail> orderDetails;
 
 }
