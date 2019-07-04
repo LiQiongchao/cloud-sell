@@ -12,7 +12,7 @@ import java.util.List;
  * @Author: LiQiongchao
  * @Date: 2019/7/4 23:51
  */
-@FeignClient(value = "sell-product")
+@FeignClient(name = "sell-product")
 public interface ProductClient {
 
     @PostMapping("/product/listForOrder")
