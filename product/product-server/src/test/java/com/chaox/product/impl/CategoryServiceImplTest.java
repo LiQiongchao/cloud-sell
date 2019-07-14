@@ -1,7 +1,7 @@
 package com.chaox.product.impl;
 
 
-import com.chaox.product.SellProductApplicationTests;
+import com.chaox.product.ProductServerApplicationTests;
 import com.chaox.product.model.ProductCategory;
 import com.chaox.product.service.CategoryService;
 import org.junit.Assert;
@@ -17,7 +17,7 @@ import java.util.List;
  * @Date: 2019/6/21 0:25
  */
 @Component
-public class CategoryServiceImplTest extends SellProductApplicationTests {
+public class CategoryServiceImplTest extends ProductServerApplicationTests {
 
     @Autowired
     private CategoryService categoryService;
