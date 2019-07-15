@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: sell-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/LiQiongchao/config-repo.git
+          username: liqiongchao
+          password: Ak47;b51
+          basedir: C:/Users/LIQION~1/AppData/Local/Temp/config-repo-818/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://139.224.232.41:8050/eureka/
+
+server:
+  port: 8082
