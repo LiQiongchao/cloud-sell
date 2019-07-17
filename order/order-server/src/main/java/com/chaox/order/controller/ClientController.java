@@ -3,6 +3,7 @@ package com.chaox.order.controller;
 import com.chaox.order.client.ProductMsgClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,10 +29,18 @@ public class ClientController {
     @Autowired
     ProductMsgClient productMsgClient;
 
+    @Value("${env}")
+    private String env;
+
     @GetMapping("/feignMsg")
     public String getFeignMsg() {
         String msg = productMsgClient.getMsg();
         return msg;
+    }
+
+    @GetMapping("/env")
+    public String printEnv() {
+        return env;
     }
 
     @GetMapping("getProductMsg")

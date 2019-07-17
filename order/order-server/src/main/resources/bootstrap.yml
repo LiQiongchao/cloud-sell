@@ -1,0 +1,21 @@
+
+spring:
+  application:
+    name: sell-order
+
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        # 在eureka上的注册名
+        service-id: sell-config
+      profile: dev
+  main:
+    # 允许有多@FeignClient的name一样
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    service-url:
+      # 默认找localhost:8761的eureka，没有话会去找localhost:8888的config的服务。
+      defaultZone: http://139.224.232.41:8050/eureka/
