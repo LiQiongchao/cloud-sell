@@ -2,7 +2,9 @@
 spring:
   application:
     name: sell-order
-
+  rabbitmq:
+    host: 139.224.232.41
+    port: 8051
   cloud:
     config:
       discovery:

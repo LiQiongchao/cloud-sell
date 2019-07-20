@@ -9,6 +9,10 @@ spring:
           username: liqiongchao
           password: Ak47;b51
           basedir: C:/Users/LIQION~1/AppData/Local/Temp/config-repo-818/
+  rabbitmq:
+    host: 139.224.232.41
+    port: 8051
+
 
 eureka:
   client:
@@ -17,3 +21,9 @@ eureka:
 
 server:
   port: 8082
+management:
+  endpoints:
+    web:
+      exposure:
+#        include: "*"
+        include: "bus-refresh"
