@@ -8,9 +8,12 @@ import com.chaox.product.enums.ResultEnum;
 import com.chaox.product.model.ProductInfo;
 import com.chaox.product.repository.ProductInfoRepository;
 import com.chaox.product.service.ProductService;
+import com.google.gson.Gson;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductInfoRepository productInfoRepository;
+
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
     @Override
     public List<ProductInfo> findAll() {
@@ -43,6 +49,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductInfoOutput> decreaseStock(List<DecreaseStockInput> decreaseStockInputList) {
+        List<ProductInfoOutput> list = this.decreaseStockProcess(decreaseStockInputList);
+        amqpTemplate.convertAndSend("productInfo", new Gson().toJson(list));
+        return list;
+    }
+
+    @Transactional
+    protected List<ProductInfoOutput> decreaseStockProcess(List<DecreaseStockInput> decreaseStockInputList) {
         List<ProductInfoOutput> list = new ArrayList<>(decreaseStockInputList.size() + 1);
         for (DecreaseStockInput decreaseStockInput : decreaseStockInputList) {
             Optional<ProductInfo> info = productInfoRepository.findById(decreaseStockInput.getProductId());

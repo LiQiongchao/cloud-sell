@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: sell-gateway
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: sell-config
+      profile: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://139.224.232.41:8050/eureka/
+zuul:
+  routes:
+    sell-product: /product/**
+  ignored-patterns:
+#    - /**/list
+    - /product/product/list
+    - /sell-product/product/list
+#    myProduct:
+#      path: /product/**
+#      serviceId: sell-product
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -26,7 +26,8 @@ public class OrderForm2OrderDTOConverter {
         orderDTO.setBuyerAddress(orderForm.getAddress());
         orderDTO.setBuyerOpenid(orderForm.getOpenid());
         try {
-            List<OrderDetail> orderDetails = new Gson().fromJson(orderForm.getItems(), new TypeToken<List<OrderDetail>>() {
+            List<OrderDetail> orderDetails = new Gson().fromJson(orderForm.getItems(),
+                    new TypeToken<List<OrderDetail>>() {
             }.getType());
             orderDTO.setOrderDetails(orderDetails);
         } catch (JsonSyntaxException e) {

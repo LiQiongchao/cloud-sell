@@ -9,6 +9,11 @@ spring:
     password: root
   application:
     name: sell-product
+  rabbitmq:
+    host: 139.224.232.41
+    port: 8051
+    username: guest
+    password: guest
 eureka:
   instance:
     hostname: 127.0.0.1

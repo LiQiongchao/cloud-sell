@@ -2,9 +2,14 @@
 spring:
   application:
     name: sell-order
+
+
   rabbitmq:
     host: 139.224.232.41
     port: 8051
+    username: guest
+    password: guest
+
   cloud:
     config:
       discovery:
@@ -12,9 +17,19 @@ spring:
         # 在eureka上的注册名
         service-id: sell-config
       profile: dev
+    stream:
+      bindings:
+        # 队列名
+        streamMessage:
+          # 定义的组名
+          group: order
+          content-type: application/json
   main:
     # 允许有多@FeignClient的name一样
     allow-bean-definition-overriding: true
+  redis:
+    host: 139.224.232.41
+    port: 8053
 
 eureka:
   client:
