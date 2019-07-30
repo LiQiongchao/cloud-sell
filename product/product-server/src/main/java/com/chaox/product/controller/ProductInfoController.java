@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/product")
+@CrossOrigin(allowCredentials = "true")
 public class ProductInfoController {
 
     @Autowired
@@ -33,6 +34,10 @@ public class ProductInfoController {
 
     @GetMapping("/list")
     public ResultVo<List<ProductVo>> list() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+        }
         List<ProductInfo> productInfos = productService.findAll();
         List<Integer> categoryId = productInfos.stream().map(ProductInfo::getCategoryType).collect(Collectors.toList());
         List<ProductCategory> categories = categoryService.findByCategoryTypeIn(categoryId);

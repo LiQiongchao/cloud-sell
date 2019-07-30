@@ -36,3 +36,23 @@ eureka:
     service-url:
       # 默认找localhost:8761的eureka，没有话会去找localhost:8888的config的服务。
       defaultZone: http://139.224.232.41:8050/eureka/
+
+# config hystrix for all method
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+    # config for single method
+    getProductInfo:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1500
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
