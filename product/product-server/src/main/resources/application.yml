@@ -14,12 +14,29 @@ spring:
     port: 8051
     username: guest
     password: guest
+  zipkin:
+    base-url: http://139.224.232.41:8054/
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1.0
+
 eureka:
   instance:
     hostname: 127.0.0.1
+    prefer-ip-address: true
   client:
     service-url:
       defaultZone: http://139.224.232.41:8050/eureka/
 #      defaultZone: http://127.0.0.1:8050/eureka/
 server:
   port: 8080
+
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          openfeign: debug

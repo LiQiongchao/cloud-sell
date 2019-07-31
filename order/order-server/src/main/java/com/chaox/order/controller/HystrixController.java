@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
  * @Author: LiQiongchao
  * @Date: 2019/7/28 12:46
  */
+@Deprecated
 @RestController
 @DefaultProperties(defaultFallback = "defaultFallback")
 public class HystrixController {
